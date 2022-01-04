@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # prepared_statements: false # Disable this if you use PGBouncer
+
+development:
+  <<: *default
+  database: rails_vue_template_development
+
+test:
+  <<: *default
+  database: rails_vue_template_development
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
+staging:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
